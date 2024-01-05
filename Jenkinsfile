@@ -10,5 +10,11 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/Hadijah-ateh/NEW-PROJECT-3.git'
             }
         }
+        stage("Intergration Testing"){
+
+            steps{
+                sh 'mvn verify -DskipUnitTest'
+            }
+        }
     }
 }
