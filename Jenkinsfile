@@ -28,12 +28,14 @@ pipeline{
                 sh 'mvn clean install'
             }
         }
-        stage("Statict Test Analysis"){
+        stage("Static Test Analysis"){
 
             steps{
 
                 script{
-                    withSonarQubeEnv(credentialsId: 'sonarqube-token')
+                    withSonarQubeEnv(credentialsId: 'sonarqube-token'){
+                        sh 'mvn clean package sonar:sonar'
+                    }
                 }
             }
         }
